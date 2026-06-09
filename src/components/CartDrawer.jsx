@@ -23,7 +23,12 @@ export default function CartDrawer() {
           {/* Panel */}
           <motion.aside
             className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col"
-            style={{ background: 'var(--color-surface)' }}
+            style={{
+              background: 'rgba(0,0,0,0.85)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              color: '#ffffff',
+            }}
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
@@ -31,17 +36,17 @@ export default function CartDrawer() {
           >
             <div
               className="flex items-center justify-between px-6 py-5"
-              style={{ borderBottom: '1px solid var(--color-border)' }}
+              style={{ borderBottom: '1px solid rgba(255,255,255,0.15)' }}
             >
               <h2 className="font-en text-sm font-bold uppercase tracking-widest">Your Cart</h2>
-              <button type="button" onClick={closeCart} aria-label="Close cart" className="text-2xl leading-none hover:opacity-60">
+              <button type="button" onClick={closeCart} aria-label="Close cart" className="text-2xl leading-none hover:opacity-60" style={{ color: '#ffffff' }}>
                 ×
               </button>
             </div>
 
             {items.length === 0 ? (
               <div className="flex flex-1 flex-col items-center justify-center gap-2 px-6 text-center">
-                <p className="font-en text-sm" style={{ color: 'var(--color-text-muted)' }}>
+                <p className="font-en text-sm" style={{ color: '#ffffff' }}>
                   Your cart is empty.
                 </p>
               </div>
@@ -53,7 +58,7 @@ export default function CartDrawer() {
                     <div
                       key={item.id}
                       className="flex gap-4 py-4"
-                      style={{ borderBottom: '1px solid var(--color-border)' }}
+                      style={{ borderBottom: '1px solid rgba(255,255,255,0.15)' }}
                     >
                       <div
                         className="flex h-20 w-20 shrink-0 items-center justify-center rounded-lg p-2"
@@ -67,12 +72,12 @@ export default function CartDrawer() {
                           {formatPrice(item.price)}
                         </span>
                         <div className="mt-auto flex items-center gap-3">
-                          <div className="flex items-center rounded-full" style={{ border: '1px solid var(--color-border)' }}>
+                          <div className="flex items-center rounded-full" style={{ border: '1px solid rgba(255,255,255,0.15)' }}>
                             <button type="button" onClick={() => setQty(item.id, item.qty - 1)} aria-label="Decrease" className="px-2.5 py-1 hover:opacity-60">−</button>
                             <span className="min-w-6 text-center font-en text-sm">{item.qty}</span>
                             <button type="button" onClick={() => setQty(item.id, item.qty + 1)} aria-label="Increase" className="px-2.5 py-1 hover:opacity-60">+</button>
                           </div>
-                          <button type="button" onClick={() => removeItem(item.id)} className="font-en text-xs underline" style={{ color: 'var(--color-text-muted)' }}>
+                          <button type="button" onClick={() => removeItem(item.id)} className="font-en text-xs underline" style={{ color: 'rgba(255,255,255,0.6)' }}>
                             Remove
                           </button>
                         </div>
@@ -85,7 +90,7 @@ export default function CartDrawer() {
             )}
 
             {items.length > 0 && (
-              <div className="px-6 py-5" style={{ borderTop: '1px solid var(--color-border)' }}>
+              <div className="px-6 py-5" style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}>
                 <div className="mb-4 flex items-center justify-between">
                   <span className="font-en text-sm font-semibold uppercase tracking-wider">Total</span>
                   <span className="font-en text-lg font-bold" style={{ color: 'var(--color-accent)' }}>
