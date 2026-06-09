@@ -22,8 +22,8 @@ export default function ProductCard({ product }) {
       transition={{ duration: 0.2 }}
       className="group relative flex flex-col overflow-hidden rounded-xl"
       style={{
-        background: 'var(--color-surface)',
-        border: '1px solid var(--color-border)',
+        background: 'transparent',
+        border: '1px solid rgba(255,255,255,0.12)',
       }}
     >
       <Link to={`/product/${product.id}`} className="flex flex-1 flex-col">
@@ -35,10 +35,7 @@ export default function ProductCard({ product }) {
         )}
 
         {/* Image */}
-        <div
-          className="relative flex aspect-square items-center justify-center p-6"
-          style={{ background: 'var(--color-bg-light)' }}
-        >
+        <div className="relative flex aspect-square items-center justify-center p-6">
           <img
             src={chain[0]}
             data-fb="0"
@@ -72,7 +69,10 @@ export default function ProductCard({ product }) {
         </div>
 
         {/* Details */}
-        <div className="flex flex-1 flex-col gap-1.5 p-4">
+        <div
+          className="flex flex-1 flex-col gap-1.5 p-4"
+          style={{ background: 'var(--color-surface)' }}
+        >
           <h3
             className="font-en text-sm font-bold uppercase"
             style={{ letterSpacing: '0.15em', color: 'var(--color-text)' }}

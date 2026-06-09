@@ -11,17 +11,20 @@ export default function Navbar() {
 
   return (
     <header
-      className="sticky top-0 z-40 backdrop-blur-md"
+      className="sticky top-0 z-40"
       style={{
-        background: 'color-mix(in srgb, var(--color-surface) 80%, transparent)',
-        borderBottom: '1px solid var(--color-border)',
+        background: 'transparent',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
+        borderBottom: '1px solid rgba(255,255,255,0.1)',
+        color: '#ffffff',
       }}
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
         <Link
           to="/"
           className="font-en text-lg font-extrabold uppercase"
-          style={{ letterSpacing: '0.2em', color: 'var(--color-text)' }}
+          style={{ letterSpacing: '0.2em', color: '#ffffff' }}
         >
           ELO
         </Link>
@@ -39,9 +42,9 @@ export default function Navbar() {
             onClick={openCart}
             aria-label="Open cart"
             className="relative flex h-9 w-9 items-center justify-center rounded-full transition-transform hover:scale-105"
-            style={{ background: 'var(--color-bg-light)' }}
+            style={{ background: 'rgba(255,255,255,0.1)' }}
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--color-text)' }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: '#ffffff' }}>
               <path d="M6 2 L3 6 v14 a2 2 0 0 0 2 2 h14 a2 2 0 0 0 2 -2 V6 l-3 -4 Z" />
               <line x1="3" y1="6" x2="21" y2="6" />
               <path d="M16 10 a4 4 0 0 1 -8 0" />
