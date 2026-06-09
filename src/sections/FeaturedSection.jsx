@@ -8,10 +8,7 @@ export default function FeaturedSection() {
   const featured = FEATURED_IDS.map((id) => products.find((p) => p.id === id)).filter(Boolean)
 
   return (
-    <section
-      className="flex min-h-screen flex-col justify-center px-6 py-20"
-      style={{ background: 'var(--color-bg-light)' }}
-    >
+    <section className="flex min-h-screen flex-col justify-center px-6 py-20">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}

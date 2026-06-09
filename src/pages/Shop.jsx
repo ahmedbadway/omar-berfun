@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from 'motion/react'
+import BgVideo from '../components/BgVideo'
 import CategoryTabs from '../components/CategoryTabs'
 import ProductCard from '../components/ProductCard'
 import { useFilter } from '../hooks/useFilter'
@@ -7,7 +8,8 @@ export default function Shop() {
   const { active, setActive, filtered } = useFilter('perfumes')
 
   return (
-    <div className="min-h-screen px-6 py-12" style={{ background: 'var(--color-bg-light)' }}>
+    <div className="min-h-screen px-6 py-12">
+      <BgVideo />
       <div className="mx-auto w-full max-w-7xl">
         <h1 className="mb-8 text-center font-en text-3xl font-extrabold uppercase tracking-widest md:text-4xl">
           Shop

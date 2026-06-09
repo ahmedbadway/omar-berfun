@@ -6,10 +6,7 @@ export default function BestsellersSection() {
   const perfumes = products.filter((p) => p.category === 'perfumes')
 
   return (
-    <section
-      className="flex min-h-screen flex-col justify-center py-20"
-      style={{ background: 'var(--color-bg-light)' }}
-    >
+    <section className="flex min-h-screen flex-col justify-center py-20">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}

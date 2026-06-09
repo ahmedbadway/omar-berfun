@@ -6,7 +6,7 @@ export default function CategoriesSection() {
   return (
     <section
       className="flex min-h-screen flex-col justify-center px-6 py-20"
-      style={{ background: 'var(--color-bg-dark)', color: 'var(--color-text-on-dark)' }}
+      style={{ color: 'var(--color-text-on-dark)' }}
     >
       <motion.div
         initial={{ opacity: 0, y: 40 }}

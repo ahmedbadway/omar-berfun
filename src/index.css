@@ -30,8 +30,8 @@ html {
 
 body {
   font-family: var(--font-en);
-  color: var(--color-text);
-  background: var(--color-bg-light);
+  color: var(--color-text-on-dark);
+  background: var(--color-bg-dark);
   -webkit-font-smoothing: antialiased;
 }
 

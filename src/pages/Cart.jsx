@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import BgVideo from '../components/BgVideo'
 import { useCart } from '../hooks/useCart'
 import { buildOrderLink, formatPrice } from '../lib/whatsapp'
 import { imageChain, fallbackOnError } from '../lib/productImage'
@@ -7,7 +8,8 @@ export default function Cart() {
   const { items, total, setQty, removeItem } = useCart()
 
   return (
-    <div className="min-h-screen px-6 py-12" style={{ background: 'var(--color-bg-light)' }}>
+    <div className="min-h-screen px-6 py-12">
+      <BgVideo />
       <div className="mx-auto w-full max-w-3xl">
         <h1 className="mb-8 font-en text-3xl font-extrabold uppercase tracking-widest">Cart</h1>
 

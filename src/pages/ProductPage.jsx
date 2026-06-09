@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { motion } from 'motion/react'
+import BgVideo from '../components/BgVideo'
 import Badge from '../components/Badge'
 import ProductCard from '../components/ProductCard'
 import { products } from '../data/products'
@@ -15,6 +16,7 @@ export default function ProductPage() {
   if (!product) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center gap-4 px-6 text-center">
+        <BgVideo />
         <p className="font-en text-lg">Product not found.</p>
         <Link to="/shop" className="font-en text-sm underline" style={{ color: 'var(--color-accent)' }}>
           Back to shop
@@ -31,7 +33,8 @@ export default function ProductPage() {
   const canBuy = product.inStock && product.price != null
 
   return (
-    <div className="min-h-screen px-6 py-12" style={{ background: 'var(--color-bg-light)' }}>
+    <div className="min-h-screen px-6 py-12">
+      <BgVideo />
       <div className="mx-auto w-full max-w-6xl">
         <Link to="/shop" className="mb-8 inline-block font-en text-xs uppercase tracking-wider" style={{ color: 'var(--color-text-muted)' }}>
           ← Back to shop
