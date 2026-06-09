@@ -23,7 +23,7 @@ export default function ProductCard({ product }) {
       className="group relative flex flex-col overflow-hidden rounded-xl"
       style={{
         background: 'transparent',
-        border: '1px solid rgba(255,255,255,0.12)',
+        border: '1px solid rgba(255,255,255,0.15)',
       }}
     >
       <Link to={`/product/${product.id}`} className="flex flex-1 flex-col">
@@ -69,19 +69,16 @@ export default function ProductCard({ product }) {
         </div>
 
         {/* Details */}
-        <div
-          className="flex flex-1 flex-col gap-1.5 p-4"
-          style={{ background: 'var(--color-surface)' }}
-        >
+        <div className="flex flex-1 flex-col gap-1.5 p-4">
           <h3
             className="font-en text-sm font-bold uppercase"
-            style={{ letterSpacing: '0.15em', color: 'var(--color-text)' }}
+            style={{ letterSpacing: '0.15em', color: '#ffffff' }}
           >
             {product.name}
           </h3>
           <p
             className="truncate font-en text-xs"
-            style={{ color: 'var(--color-text-muted)' }}
+            style={{ color: 'rgba(255,255,255,0.6)' }}
           >
             {product.scents.length ? product.scents.join(' · ') : ' '}
           </p>
@@ -92,7 +89,7 @@ export default function ProductCard({ product }) {
             {product.originalPrice != null && (
               <span
                 className="font-en text-sm line-through"
-                style={{ color: 'var(--color-text-muted)' }}
+                style={{ color: 'rgba(255,255,255,0.4)' }}
               >
                 {formatPrice(product.originalPrice)}
               </span>
