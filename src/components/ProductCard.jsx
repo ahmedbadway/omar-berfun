@@ -1,13 +1,13 @@
 import { motion } from 'motion/react'
 import { Link } from 'react-router-dom'
 import Badge from './Badge'
-import { svgForCategory } from '../data/categories'
 import { useCart } from '../hooks/useCart'
 import { formatPrice } from '../lib/whatsapp'
+import { imageChain, fallbackOnError } from '../lib/productImage'
 
 export default function ProductCard({ product }) {
   const { addItem } = useCart()
-  const img = `${import.meta.env.BASE_URL}assets/placeholders/${svgForCategory(product.category)}.svg`
+  const chain = imageChain(product)
 
   const handleAdd = (e) => {
     e.preventDefault()
@@ -39,7 +39,14 @@ export default function ProductCard({ product }) {
           className="relative flex aspect-square items-center justify-center p-6"
           style={{ background: 'var(--color-bg-light)' }}
         >
-          <img src={img} alt={product.name} className="h-full w-auto object-contain" loading="lazy" />
+          <img
+            src={chain[0]}
+            data-fb="0"
+            onError={fallbackOnError(chain)}
+            alt={product.name}
+            className="h-full w-auto object-contain"
+            loading="lazy"
+          />
 
           {/* Out of stock badge — centered over image */}
           {!product.inStock && (

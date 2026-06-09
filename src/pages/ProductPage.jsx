@@ -3,9 +3,9 @@ import { motion } from 'motion/react'
 import Badge from '../components/Badge'
 import ProductCard from '../components/ProductCard'
 import { products } from '../data/products'
-import { svgForCategory } from '../data/categories'
 import { useCart } from '../hooks/useCart'
 import { formatPrice } from '../lib/whatsapp'
+import { imageChain, fallbackOnError } from '../lib/productImage'
 
 export default function ProductPage() {
   const { id } = useParams()
@@ -23,7 +23,7 @@ export default function ProductPage() {
     )
   }
 
-  const img = `${import.meta.env.BASE_URL}assets/placeholders/${svgForCategory(product.category)}.svg`
+  const chain = imageChain(product)
   const related = products
     .filter((p) => p.category === product.category && p.id !== product.id)
     .slice(0, 4)
@@ -51,7 +51,13 @@ export default function ProductPage() {
                 <Badge variant="sale">Sale</Badge>
               </div>
             )}
-            <img src={img} alt={product.name} className="h-full w-auto object-contain" />
+            <img
+              src={chain[0]}
+              data-fb="0"
+              onError={fallbackOnError(chain)}
+              alt={product.name}
+              className="h-full w-auto object-contain"
+            />
           </motion.div>
 
           {/* Details */}

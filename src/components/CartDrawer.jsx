@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'motion/react'
-import { svgForCategory } from '../data/categories'
 import { useCart } from '../hooks/useCart'
 import { buildOrderLink, formatPrice } from '../lib/whatsapp'
+import { imageChain, fallbackOnError } from '../lib/productImage'
 
 export default function CartDrawer() {
   const { items, total, isOpen, closeCart, setQty, removeItem } = useCart()
@@ -48,7 +48,7 @@ export default function CartDrawer() {
             ) : (
               <div className="flex-1 overflow-y-auto px-6 py-4">
                 {items.map((item) => {
-                  const img = `${import.meta.env.BASE_URL}assets/placeholders/${svgForCategory(item.category)}.svg`
+                  const chain = imageChain(item)
                   return (
                     <div
                       key={item.id}
@@ -59,7 +59,7 @@ export default function CartDrawer() {
                         className="flex h-20 w-20 shrink-0 items-center justify-center rounded-lg p-2"
                         style={{ background: 'var(--color-bg-light)' }}
                       >
-                        <img src={img} alt={item.name} className="h-full w-auto object-contain" />
+                        <img src={chain[0]} data-fb="0" onError={fallbackOnError(chain)} alt={item.name} className="h-full w-auto object-contain" />
                       </div>
                       <div className="flex flex-1 flex-col">
                         <h3 className="font-en text-xs font-bold uppercase tracking-wider">{item.name}</h3>

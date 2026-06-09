@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import { svgForCategory } from '../data/categories'
 import { useCart } from '../hooks/useCart'
 import { buildOrderLink, formatPrice } from '../lib/whatsapp'
+import { imageChain, fallbackOnError } from '../lib/productImage'
 
 export default function Cart() {
   const { items, total, setQty, removeItem } = useCart()
@@ -24,7 +24,7 @@ export default function Cart() {
           <>
             <div className="rounded-xl" style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)' }}>
               {items.map((item, idx) => {
-                const img = `${import.meta.env.BASE_URL}assets/placeholders/${svgForCategory(item.category)}.svg`
+                const chain = imageChain(item)
                 return (
                   <div
                     key={item.id}
@@ -32,7 +32,7 @@ export default function Cart() {
                     style={idx > 0 ? { borderTop: '1px solid var(--color-border)' } : undefined}
                   >
                     <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-lg p-2" style={{ background: 'var(--color-bg-light)' }}>
-                      <img src={img} alt={item.name} className="h-full w-auto object-contain" />
+                      <img src={chain[0]} data-fb="0" onError={fallbackOnError(chain)} alt={item.name} className="h-full w-auto object-contain" />
                     </div>
                     <div className="flex flex-1 flex-col">
                       <h3 className="font-en text-sm font-bold uppercase tracking-wider">{item.name}</h3>

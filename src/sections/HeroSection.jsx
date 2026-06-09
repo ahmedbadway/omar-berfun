@@ -3,13 +3,28 @@ import { Link } from 'react-router-dom'
 
 export default function HeroSection() {
   const bottle = `${import.meta.env.BASE_URL}assets/placeholders/perfume-bottle.svg`
+  const heroVideo = `${import.meta.env.BASE_URL}videos/hero-bg.mp4`
 
   return (
     <section
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center"
       style={{ background: 'var(--color-bg-dark)', color: 'var(--color-text-on-dark)' }}
     >
+      {/* Fullscreen background video — Ahmed replaces hero-bg.mp4 with the real video later */}
+      <video
+        className="absolute inset-0 z-0 h-full w-full object-cover"
+        src={heroVideo}
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-hidden="true"
+      />
+      {/* Dark overlay keeps the text readable over the video */}
+      <div className="absolute inset-0 z-0" style={{ background: 'rgba(0,0,0,0.5)' }} />
+
       <motion.div
+        style={{ position: 'relative', zIndex: 10 }}
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
