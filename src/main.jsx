@@ -1,0 +1,19 @@
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import App from './App'
+import { CartProvider } from './context/CartContext'
+import './index.css'
+
+// Strip trailing slash so the router basename matches GitHub Pages base.
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '')
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <BrowserRouter basename={basename}>
+      <CartProvider>
+        <App />
+      </CartProvider>
+    </BrowserRouter>
+  </StrictMode>
+)

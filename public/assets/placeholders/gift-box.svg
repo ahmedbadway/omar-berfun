@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" role="img" aria-label="Gift box with ribbon">
+  <style>
+    :root { --c-primary: #0a0a0a; --c-accent: #c9a96e; --c-surface: #ffffff; }
+    .box { fill: var(--c-primary); }
+    .lid { fill: var(--c-primary); }
+    .ribbon { fill: var(--c-accent); }
+    .shine { fill: var(--c-surface); opacity: 0.08; }
+  </style>
+  <rect x="50" y="110" width="100" height="110" rx="6" class="box" />
+  <rect x="42" y="92" width="116" height="28" rx="5" class="lid" />
+  <rect x="90" y="92" width="20" height="128" class="ribbon" />
+  <path class="ribbon" d="M100 92 q-28 -34 -42 -18 q-12 16 42 18 q54 -2 42 -18 q-14 -16 -42 18 Z" />
+  <rect x="56" y="150" width="14" height="60" rx="4" class="shine" />
+</svg>

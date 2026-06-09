@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #0a0a0a;
+  --color-accent: #c9a96e;
+  --color-bg-light: #f8f6f3;
+  --color-bg-dark: #0a0a0a;
+  --color-surface: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-muted: #6b6b6b;
+  --color-text-on-dark: #f8f6f3;
+  --color-border: #e8e4df;
+  --color-sale: #e63946;
+  --color-out-of-stock: #b5924a;
+  --font-ar: 'Cairo', sans-serif;
+  --font-en: 'Nunito', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-en);
+  color: var(--color-text);
+  background: var(--color-bg-light);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-ar {
+  font-family: var(--font-ar);
+}
+
+/* Hide scrollbar for horizontal bestsellers row */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

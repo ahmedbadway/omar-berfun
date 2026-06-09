@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" role="img" aria-label="Vase diffuser with reed sticks">
+  <style>
+    :root { --c-primary: #0a0a0a; --c-accent: #c9a96e; --c-surface: #ffffff; }
+    .vase { fill: var(--c-primary); }
+    .reed { stroke: var(--c-accent); stroke-width: 4; stroke-linecap: round; }
+    .shine { fill: var(--c-surface); opacity: 0.1; }
+  </style>
+  <g class="reed">
+    <line x1="100" y1="40" x2="100" y2="170" />
+    <line x1="78" y1="52" x2="92" y2="170" />
+    <line x1="122" y1="52" x2="108" y2="170" />
+    <line x1="64" y1="70" x2="86" y2="172" />
+    <line x1="136" y1="70" x2="114" y2="172" />
+    <line x1="100" y1="58" x2="100" y2="170" opacity="0.6" />
+  </g>
+  <path class="vase" d="M66 168 q34 -10 68 0 q14 30 4 70 q-6 28 -38 28 q-32 0 -38 -28 q-10 -40 4 -70 Z" />
+  <ellipse cx="100" cy="172" rx="34" ry="8" class="shine" />
+  <ellipse cx="84" cy="220" rx="8" ry="22" class="shine" />
+</svg>

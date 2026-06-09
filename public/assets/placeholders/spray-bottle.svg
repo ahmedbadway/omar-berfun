@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" role="img" aria-label="Spray bottle">
+  <style>
+    :root { --c-primary: #0a0a0a; --c-accent: #c9a96e; --c-surface: #ffffff; }
+    .body { fill: var(--c-primary); }
+    .cap { fill: var(--c-accent); }
+    .shine { fill: var(--c-surface); opacity: 0.08; }
+    .label { fill: var(--c-accent); font-family: 'Nunito', sans-serif; font-weight: 700; letter-spacing: 2px; }
+  </style>
+  <rect x="84" y="10" width="32" height="14" rx="2" class="cap" />
+  <rect x="94" y="24" width="12" height="14" class="body" />
+  <rect x="74" y="38" width="52" height="222" rx="16" class="body" />
+  <rect x="82" y="120" width="14" height="120" rx="7" class="shine" />
+  <rect x="82" y="150" width="36" height="44" rx="4" fill="var(--c-surface)" opacity="0.06" />
+  <text x="100" y="178" text-anchor="middle" font-size="11" class="label">ELO</text>
+</svg>

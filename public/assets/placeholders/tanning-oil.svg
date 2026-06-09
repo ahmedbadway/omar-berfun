@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" role="img" aria-label="Tanning oil pump bottle">
+  <style>
+    :root { --c-primary: #0a0a0a; --c-accent: #c9a96e; --c-surface: #ffffff; }
+    .body { fill: var(--c-primary); }
+    .pump { fill: var(--c-accent); }
+    .shine { fill: var(--c-surface); opacity: 0.08; }
+    .label { fill: var(--c-accent); font-family: 'Nunito', sans-serif; font-weight: 700; letter-spacing: 1px; }
+  </style>
+  <rect x="92" y="12" width="34" height="10" rx="3" class="pump" />
+  <rect x="110" y="22" width="10" height="20" class="pump" />
+  <rect x="96" y="42" width="20" height="14" class="body" />
+  <rect x="84" y="56" width="44" height="204" rx="14" class="body" />
+  <rect x="92" y="120" width="12" height="120" rx="6" class="shine" />
+  <rect x="90" y="150" width="32" height="50" rx="4" fill="var(--c-surface)" opacity="0.06" />
+  <text x="106" y="180" text-anchor="middle" font-size="10" class="label">OIL</text>
+</svg>

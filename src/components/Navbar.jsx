@@ -1,0 +1,62 @@
+import { Link, NavLink } from 'react-router-dom'
+import { useCart } from '../hooks/useCart'
+
+export default function Navbar() {
+  const { count, openCart } = useCart()
+
+  const linkClass = ({ isActive }) =>
+    `font-en text-sm font-semibold uppercase tracking-wider transition-opacity hover:opacity-60 ${
+      isActive ? 'opacity-100' : 'opacity-70'
+    }`
+
+  return (
+    <header
+      className="sticky top-0 z-40 backdrop-blur-md"
+      style={{
+        background: 'color-mix(in srgb, var(--color-surface) 80%, transparent)',
+        borderBottom: '1px solid var(--color-border)',
+      }}
+    >
+      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
+        <Link
+          to="/"
+          className="font-en text-lg font-extrabold uppercase"
+          style={{ letterSpacing: '0.2em', color: 'var(--color-text)' }}
+        >
+          ELO
+        </Link>
+
+        <div className="flex items-center gap-7">
+          <NavLink to="/" className={linkClass} end>
+            Home
+          </NavLink>
+          <NavLink to="/shop" className={linkClass}>
+            Shop
+          </NavLink>
+
+          <button
+            type="button"
+            onClick={openCart}
+            aria-label="Open cart"
+            className="relative flex h-9 w-9 items-center justify-center rounded-full transition-transform hover:scale-105"
+            style={{ background: 'var(--color-bg-light)' }}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--color-text)' }}>
+              <path d="M6 2 L3 6 v14 a2 2 0 0 0 2 2 h14 a2 2 0 0 0 2 -2 V6 l-3 -4 Z" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <path d="M16 10 a4 4 0 0 1 -8 0" />
+            </svg>
+            {count > 0 && (
+              <span
+                className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold"
+                style={{ background: 'var(--color-accent)', color: 'var(--color-primary)' }}
+              >
+                {count}
+              </span>
+            )}
+          </button>
+        </div>
+      </nav>
+    </header>
+  )
+}
