@@ -1,5 +1,5 @@
 // Ahmed will update this number later.
-export const WHATSAPP_NUMBER = '96500000000'
+const WHATSAPP_NUMBER = '96500000000'
 
 export const formatPrice = (value) =>
   value == null ? '—' : `${value.toFixed(value % 1 === 0 ? 0 : 1)} KWD`
