@@ -2,8 +2,6 @@ import { motion } from 'motion/react'
 import { Link } from 'react-router-dom'
 
 export default function HeroSection() {
-  const bottle = `${import.meta.env.BASE_URL}assets/placeholders/perfume-bottle.svg`
-
   return (
     <section
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center"
@@ -15,15 +13,6 @@ export default function HeroSection() {
         transition={{ duration: 0.8, ease: 'easeOut' }}
         className="flex flex-col items-center"
       >
-        {/* Floating bottle */}
-        <motion.img
-          src={bottle}
-          alt="ELO Perfume bottle"
-          className="mb-8 h-44 w-auto md:h-56"
-          animate={{ y: [0, -12, 0] }}
-          transition={{ duration: 3, ease: 'easeInOut', repeat: Infinity }}
-        />
-
         <h1
           className="font-en text-4xl font-extrabold uppercase md:text-7xl"
           style={{ letterSpacing: '0.18em' }}
