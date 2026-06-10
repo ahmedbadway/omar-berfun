@@ -23,16 +23,14 @@ export default function Shop() {
 
         <motion.div layout className="grid grid-cols-2 gap-5 md:grid-cols-4">
           <AnimatePresence mode="popLayout">
-            {filtered.map((product) => (
+            {filtered.map((product, i) => (
               <motion.div
                 key={product.id}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.25 }}
               >
-                <ProductCard product={product} />
+                <ProductCard product={product} index={i} />
               </motion.div>
             ))}
           </AnimatePresence>

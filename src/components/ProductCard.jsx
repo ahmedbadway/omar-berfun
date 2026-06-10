@@ -6,7 +6,7 @@ import { useCart } from '../hooks/useCart'
 import { formatPrice } from '../lib/whatsapp'
 import { imageChain, fallbackOnError } from '../lib/productImage'
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, index = 0 }) {
   const { addItem } = useCart()
   const { t } = useTranslation()
   const chain = imageChain(product)
@@ -19,9 +19,11 @@ export default function ProductCard({ product }) {
 
   return (
     <motion.div
-      initial={false}
-      whileHover={{ scale: 1.02 }}
-      transition={{ duration: 0.2 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      whileHover={{ scale: 1.02, boxShadow: '0 12px 30px rgba(0,0,0,0.35)', transition: { duration: 0.2, delay: 0 } }}
+      transition={{ duration: 0.5, ease: 'easeOut', delay: (index % 8) * 0.1 }}
       className="group relative flex flex-col overflow-hidden rounded-xl"
       style={{
         background: 'transparent',

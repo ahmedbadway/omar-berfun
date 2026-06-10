@@ -22,8 +22,8 @@ export default function FeaturedSection() {
           {t('featured.title')}
         </h2>
         <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
-          {featured.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {featured.map((product, i) => (
+            <ProductCard key={product.id} product={product} index={i} />
           ))}
         </div>
       </motion.div>

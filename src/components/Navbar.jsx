@@ -1,21 +1,35 @@
+import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { motion, useMotionValueEvent, useScroll } from 'motion/react'
 import { useCart } from '../hooks/useCart'
 
 export default function Navbar() {
   const { count, openCart } = useCart()
   const { t, i18n } = useTranslation()
+  const [hidden, setHidden] = useState(false)
+
+  // Hide on scroll down, reveal on scroll up (ignore tiny scrolls near the top).
+  const { scrollY } = useScroll()
+  useMotionValueEvent(scrollY, 'change', (y) => {
+    const prev = scrollY.getPrevious() ?? 0
+    if (y > prev && y > 80) setHidden(true)
+    else if (y < prev) setHidden(false)
+  })
 
   const toggleLang = () => i18n.changeLanguage(i18n.language === 'ar' ? 'en' : 'ar')
 
   const linkClass = ({ isActive }) =>
-    `font-en text-sm font-semibold uppercase tracking-wider transition-opacity hover:opacity-60 ${
+    `text-sm font-semibold uppercase tracking-wider transition-opacity hover:opacity-60 ${
       isActive ? 'opacity-100' : 'opacity-70'
     }`
 
   return (
-    <header
+    <motion.header
       className="sticky top-0 z-40"
+      initial={{ y: -60, opacity: 0 }}
+      animate={hidden ? { y: -80, opacity: 0 } : { y: 0, opacity: 1 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
       style={{
         background: 'transparent',
         backdropFilter: 'blur(10px)',
@@ -27,7 +41,7 @@ export default function Navbar() {
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
         <Link
           to="/"
-          className="font-en text-lg font-extrabold uppercase"
+          className="text-lg font-extrabold uppercase"
           style={{ letterSpacing: '0.2em', color: '#ffffff' }}
         >
           ELO
@@ -74,6 +88,6 @@ export default function Navbar() {
           </button>
         </div>
       </nav>
-    </header>
+    </motion.header>
   )
 }

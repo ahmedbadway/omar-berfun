@@ -123,8 +123,8 @@ export default function ProductPage() {
           <div className="mt-20">
             <h2 className="mb-8 text-xl font-bold uppercase tracking-widest">{t('product.related')}</h2>
             <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
-              {related.map((p) => (
-                <ProductCard key={p.id} product={p} />
+              {related.map((p, i) => (
+                <ProductCard key={p.id} product={p} index={i} />
               ))}
             </div>
           </div>

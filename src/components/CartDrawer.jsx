@@ -15,10 +15,11 @@ export default function CartDrawer() {
           {/* Backdrop */}
           <motion.div
             className="fixed inset-0 z-50"
-            style={{ background: 'rgba(10,10,10,0.45)' }}
+            style={{ background: '#000000' }}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: 0.6 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
             onClick={closeCart}
           />
 
@@ -34,7 +35,7 @@ export default function CartDrawer() {
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ type: 'spring', stiffness: 320, damping: 36 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 40 }}
           >
             <div
               className="flex items-center justify-between px-6 py-5"
@@ -54,13 +55,16 @@ export default function CartDrawer() {
               </div>
             ) : (
               <div className="flex-1 overflow-y-auto px-6 py-4">
-                {items.map((item) => {
+                {items.map((item, i) => {
                   const chain = imageChain(item)
                   return (
-                    <div
+                    <motion.div
                       key={item.id}
                       className="flex gap-4 py-4"
                       style={{ borderBottom: '1px solid rgba(255,255,255,0.15)' }}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: i * 0.05, ease: 'easeOut' }}
                     >
                       <div
                         className="flex h-20 w-20 shrink-0 items-center justify-center rounded-lg p-2"
@@ -85,7 +89,7 @@ export default function CartDrawer() {
                         </div>
                       </div>
                       <span className="font-en text-sm font-semibold">{formatPrice((item.price ?? 0) * item.qty)}</span>
-                    </div>
+                    </motion.div>
                   )
                 })}
               </div>

@@ -24,4 +24,14 @@ export function applyLanguageSideEffects(lng) {
 applyLanguageSideEffects(i18n.language)
 i18n.on('languageChanged', applyLanguageSideEffects)
 
+// Quick blur-out → blur-in on the whole app when the language changes.
+i18n.on('languageChanged', () => {
+  const el = document.getElementById('root')
+  if (!el) return
+  el.classList.remove('lang-switch')
+  void el.offsetWidth // force reflow so the animation restarts
+  el.classList.add('lang-switch')
+  setTimeout(() => el.classList.remove('lang-switch'), 350)
+})
+
 export default i18n

@@ -47,3 +47,33 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Language switch: quick blur-out → blur-in on the whole app */
+@keyframes langBlur {
+  from {
+    filter: blur(4px);
+    opacity: 0.5;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+.lang-switch {
+  animation: langBlur 0.3s ease both;
+}
+
+/* Respect users who prefer reduced motion: neutralize animations/transitions */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .lang-switch {
+    animation: none !important;
+  }
+}

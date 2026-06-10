@@ -1,7 +1,55 @@
-import { motion } from 'motion/react'
+import { motion, useMotionValue, useSpring, useTransform } from 'motion/react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { categories } from '../data/categories'
+
+const MAX_TILT = 8
+
+function CategoryCard({ cat }) {
+  const { t } = useTranslation()
+  // Normalized cursor position (-0.5 → 0.5) smoothed by a spring.
+  const px = useSpring(useMotionValue(0), { stiffness: 400, damping: 25 })
+  const py = useSpring(useMotionValue(0), { stiffness: 400, damping: 25 })
+  const rotateY = useTransform(px, [-0.5, 0.5], [-MAX_TILT, MAX_TILT])
+  const rotateX = useTransform(py, [-0.5, 0.5], [MAX_TILT, -MAX_TILT])
+
+  const handleMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    px.set((e.clientX - rect.left) / rect.width - 0.5)
+    py.set((e.clientY - rect.top) / rect.height - 0.5)
+  }
+  const handleLeave = () => {
+    px.set(0)
+    py.set(0)
+  }
+
+  return (
+    <motion.div
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
+      style={{ rotateX, rotateY, transformPerspective: 600 }}
+    >
+      <Link
+        to="/shop"
+        className="flex items-center justify-between rounded-xl p-6"
+        style={{ border: '1px solid rgba(248,246,243,0.14)' }}
+      >
+        <div>
+          <h3 className="text-sm font-bold uppercase tracking-wider md:text-base">
+            {t(`shop.${cat.id}`)}
+          </h3>
+          <p className="mt-1 text-xs" style={{ color: 'var(--color-accent)' }}>
+            {cat.count} {cat.count === 1 ? t('categoriesMeta.product') : t('categoriesMeta.products')}
+          </p>
+        </div>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="2">
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="12 5 19 12 12 19" />
+        </svg>
+      </Link>
+    </motion.div>
+  )
+}
 
 export default function CategoriesSection() {
   const { t } = useTranslation()
@@ -23,26 +71,7 @@ export default function CategoriesSection() {
         </h2>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
           {categories.map((cat) => (
-            <motion.div key={cat.id} whileHover={{ scale: 1.03 }} transition={{ duration: 0.2 }}>
-              <Link
-                to="/shop"
-                className="flex items-center justify-between rounded-xl p-6"
-                style={{ border: '1px solid rgba(248,246,243,0.14)' }}
-              >
-                <div>
-                  <h3 className="text-sm font-bold uppercase tracking-wider md:text-base">
-                    {t(`shop.${cat.id}`)}
-                  </h3>
-                  <p className="mt-1 text-xs" style={{ color: 'var(--color-accent)' }}>
-                    {cat.count} {cat.count === 1 ? t('categoriesMeta.product') : t('categoriesMeta.products')}
-                  </p>
-                </div>
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="2">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
-              </Link>
-            </motion.div>
+            <CategoryCard key={cat.id} cat={cat} />
           ))}
         </div>
       </motion.div>

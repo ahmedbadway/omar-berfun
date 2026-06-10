@@ -20,9 +20,9 @@ export default function BestsellersSection() {
           {t('bestsellers.title')}
         </h2>
         <div className="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-4">
-          {perfumes.map((product) => (
+          {perfumes.map((product, i) => (
             <div key={product.id} className="w-56 shrink-0 snap-start">
-              <ProductCard product={product} />
+              <ProductCard product={product} index={i} />
             </div>
           ))}
         </div>
