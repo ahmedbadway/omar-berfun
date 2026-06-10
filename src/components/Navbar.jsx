@@ -59,10 +59,10 @@ export default function Navbar() {
             type="button"
             onClick={toggleLang}
             aria-label="Toggle language"
-            className="font-en text-base transition-transform hover:scale-110"
-            style={{ color: '#ffffff' }}
+            className="rounded-full border px-2.5 py-1 text-xs font-bold uppercase tracking-wider transition-transform hover:scale-110"
+            style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.3)' }}
           >
-            {i18n.language === 'ar' ? '🇰🇼' : '🇬🇧'}
+            {i18n.language === 'ar' ? 'EN' : 'ع'}
           </button>
 
           <button
