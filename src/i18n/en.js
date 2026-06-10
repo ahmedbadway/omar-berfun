@@ -1,0 +1,52 @@
+export default {
+  nav: {
+    home: 'HOME',
+    shop: 'SHOP',
+  },
+  hero: {
+    title: 'ELO PERFUMES',
+    sub: 'Discover Your Scent',
+    cta: 'SHOP NOW',
+  },
+  featured: { title: 'FEATURED' },
+  categories: { title: 'COLLECTIONS' },
+  bestsellers: { title: 'BESTSELLERS' },
+  cta: {
+    title: 'ORDER VIA WHATSAPP',
+    sub: 'We deliver across Kuwait',
+    btn: 'CHAT NOW',
+  },
+  product: {
+    outOfStock: 'Out of Stock',
+    sale: 'SALE',
+    addToCart: 'Add to Cart',
+    scentNotes: 'Scent Notes',
+    related: 'YOU MAY ALSO LIKE',
+    notFound: 'Product not found.',
+    back: 'Back to shop',
+  },
+  cart: {
+    title: 'YOUR CART',
+    empty: 'Your cart is empty',
+    total: 'Total',
+    order: 'ORDER VIA WHATSAPP',
+    currency: 'KWD',
+    remove: 'Remove',
+    continue: 'Continue Shopping',
+  },
+  shop: {
+    title: 'SHOP',
+    all: 'All',
+    perfumes: 'Perfumes',
+    allOverSpray: 'All Over Spray',
+    vaseDiffusers: 'Vase Diffusers',
+    giftSets: 'Gift Sets',
+    skinCare: 'Skin Care',
+    summerOffers: 'Summer Offers',
+    emptyCategory: 'No products in this collection yet.',
+  },
+  categoriesMeta: {
+    products: 'products',
+    product: 'product',
+  },
+}

@@ -1,18 +1,20 @@
 import { AnimatePresence, motion } from 'motion/react'
+import { useTranslation } from 'react-i18next'
 import BgVideo from '../components/BgVideo'
 import CategoryTabs from '../components/CategoryTabs'
 import ProductCard from '../components/ProductCard'
 import { useFilter } from '../hooks/useFilter'
 
 export default function Shop() {
+  const { t } = useTranslation()
   const { active, setActive, filtered } = useFilter('perfumes')
 
   return (
     <div className="min-h-screen px-6 py-12">
       <BgVideo />
       <div className="mx-auto w-full max-w-7xl">
-        <h1 className="mb-8 text-center font-en text-3xl font-extrabold uppercase tracking-widest md:text-4xl">
-          Shop
+        <h1 className="mb-8 text-center text-3xl font-extrabold uppercase tracking-widest md:text-4xl">
+          {t('shop.title')}
         </h1>
 
         <div className="mb-10">
@@ -37,8 +39,8 @@ export default function Shop() {
         </motion.div>
 
         {filtered.length === 0 && (
-          <p className="mt-16 text-center font-en text-sm" style={{ color: 'var(--color-text-muted)' }}>
-            No products in this collection yet.
+          <p className="mt-16 text-center text-sm" style={{ color: 'rgba(255,255,255,0.6)' }}>
+            {t('shop.emptyCategory')}
           </p>
         )}
       </div>

@@ -1,9 +1,11 @@
 import { AnimatePresence, motion } from 'motion/react'
+import { useTranslation } from 'react-i18next'
 import { useCart } from '../hooks/useCart'
 import { buildOrderLink, formatPrice } from '../lib/whatsapp'
 import { imageChain, fallbackOnError } from '../lib/productImage'
 
 export default function CartDrawer() {
+  const { t } = useTranslation()
   const { items, total, isOpen, closeCart, setQty, removeItem } = useCart()
 
   return (
@@ -38,7 +40,7 @@ export default function CartDrawer() {
               className="flex items-center justify-between px-6 py-5"
               style={{ borderBottom: '1px solid rgba(255,255,255,0.15)' }}
             >
-              <h2 className="font-en text-sm font-bold uppercase tracking-widest">Your Cart</h2>
+              <h2 className="text-sm font-bold uppercase tracking-widest">{t('cart.title')}</h2>
               <button type="button" onClick={closeCart} aria-label="Close cart" className="text-2xl leading-none hover:opacity-60" style={{ color: '#ffffff' }}>
                 ×
               </button>
@@ -46,8 +48,8 @@ export default function CartDrawer() {
 
             {items.length === 0 ? (
               <div className="flex flex-1 flex-col items-center justify-center gap-2 px-6 text-center">
-                <p className="font-en text-sm" style={{ color: '#ffffff' }}>
-                  Your cart is empty.
+                <p className="text-sm" style={{ color: '#ffffff' }}>
+                  {t('cart.empty')}
                 </p>
               </div>
             ) : (
@@ -77,8 +79,8 @@ export default function CartDrawer() {
                             <span className="min-w-6 text-center font-en text-sm">{item.qty}</span>
                             <button type="button" onClick={() => setQty(item.id, item.qty + 1)} aria-label="Increase" className="px-2.5 py-1 hover:opacity-60">+</button>
                           </div>
-                          <button type="button" onClick={() => removeItem(item.id)} className="font-en text-xs underline" style={{ color: 'rgba(255,255,255,0.6)' }}>
-                            Remove
+                          <button type="button" onClick={() => removeItem(item.id)} className="text-xs underline" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                            {t('cart.remove')}
                           </button>
                         </div>
                       </div>
@@ -92,19 +94,19 @@ export default function CartDrawer() {
             {items.length > 0 && (
               <div className="px-6 py-5" style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}>
                 <div className="mb-4 flex items-center justify-between">
-                  <span className="font-en text-sm font-semibold uppercase tracking-wider">Total</span>
-                  <span className="font-en text-lg font-bold" style={{ color: 'var(--color-accent)' }}>
-                    {total.toFixed(1)} KWD
+                  <span className="text-sm font-semibold uppercase tracking-wider">{t('cart.total')}</span>
+                  <span className="text-lg font-bold" style={{ color: 'var(--color-accent)' }}>
+                    {total.toFixed(1)} {t('cart.currency')}
                   </span>
                 </div>
                 <a
                   href={buildOrderLink(items, total)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full rounded-full py-3.5 text-center font-en text-sm font-bold uppercase tracking-wider transition-transform hover:scale-[1.02]"
+                  className="block w-full rounded-full py-3.5 text-center text-sm font-bold uppercase tracking-wider transition-transform hover:scale-[1.02]"
                   style={{ background: 'var(--color-accent)', color: 'var(--color-primary)' }}
                 >
-                  Order on WhatsApp
+                  {t('cart.order')}
                 </a>
               </div>
             )}

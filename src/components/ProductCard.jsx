@@ -1,5 +1,6 @@
 import { motion } from 'motion/react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import Badge from './Badge'
 import { useCart } from '../hooks/useCart'
 import { formatPrice } from '../lib/whatsapp'
@@ -7,6 +8,7 @@ import { imageChain, fallbackOnError } from '../lib/productImage'
 
 export default function ProductCard({ product }) {
   const { addItem } = useCart()
+  const { t } = useTranslation()
   const chain = imageChain(product)
 
   const handleAdd = (e) => {
@@ -30,7 +32,7 @@ export default function ProductCard({ product }) {
         {/* Sale badge */}
         {product.onSale && (
           <div className="absolute left-3 top-3 z-10">
-            <Badge variant="sale">Sale</Badge>
+            <Badge variant="sale">{t('product.sale')}</Badge>
           </div>
         )}
 
@@ -48,7 +50,7 @@ export default function ProductCard({ product }) {
           {/* Out of stock badge — centered over image */}
           {!product.inStock && (
             <div className="absolute inset-x-0 bottom-3 flex justify-center">
-              <Badge variant="out">Out of Stock</Badge>
+              <Badge variant="out">{t('product.outOfStock')}</Badge>
             </div>
           )}
 

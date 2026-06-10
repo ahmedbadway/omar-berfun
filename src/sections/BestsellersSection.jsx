@@ -1,8 +1,10 @@
 import { motion } from 'motion/react'
+import { useTranslation } from 'react-i18next'
 import ProductCard from '../components/ProductCard'
 import { products } from '../data/products'
 
 export default function BestsellersSection() {
+  const { t } = useTranslation()
   const perfumes = products.filter((p) => p.category === 'perfumes')
 
   return (
@@ -14,8 +16,8 @@ export default function BestsellersSection() {
         transition={{ duration: 0.7, ease: 'easeOut' }}
         className="w-full"
       >
-        <h2 className="mb-10 px-6 text-center font-en text-3xl font-extrabold uppercase tracking-widest md:text-4xl">
-          Bestsellers
+        <h2 className="mb-10 px-6 text-center text-3xl font-extrabold uppercase tracking-widest md:text-4xl">
+          {t('bestsellers.title')}
         </h2>
         <div className="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-4">
           {perfumes.map((product) => (

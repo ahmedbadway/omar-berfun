@@ -1,25 +1,27 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import BgVideo from '../components/BgVideo'
 import { useCart } from '../hooks/useCart'
 import { buildOrderLink, formatPrice } from '../lib/whatsapp'
 import { imageChain, fallbackOnError } from '../lib/productImage'
 
 export default function Cart() {
+  const { t } = useTranslation()
   const { items, total, setQty, removeItem } = useCart()
 
   return (
     <div className="min-h-screen px-6 py-12">
       <BgVideo />
       <div className="mx-auto w-full max-w-3xl">
-        <h1 className="mb-8 font-en text-3xl font-extrabold uppercase tracking-widest">Cart</h1>
+        <h1 className="mb-8 text-3xl font-extrabold uppercase tracking-widest">{t('cart.title')}</h1>
 
         {items.length === 0 ? (
           <div className="flex flex-col items-center gap-4 py-20 text-center">
-            <p className="font-en text-sm" style={{ color: 'var(--color-text-muted)' }}>
-              Your cart is empty.
+            <p className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>
+              {t('cart.empty')}
             </p>
-            <Link to="/shop" className="rounded-full px-7 py-3 font-en text-sm font-bold uppercase tracking-wider" style={{ background: 'var(--color-primary)', color: 'var(--color-text-on-dark)' }}>
-              Continue Shopping
+            <Link to="/shop" className="rounded-full px-7 py-3 text-sm font-bold uppercase tracking-wider" style={{ background: 'var(--color-accent)', color: 'var(--color-primary)' }}>
+              {t('cart.continue')}
             </Link>
           </div>
         ) : (
@@ -47,8 +49,8 @@ export default function Cart() {
                           <span className="min-w-6 text-center font-en text-sm">{item.qty}</span>
                           <button type="button" onClick={() => setQty(item.id, item.qty + 1)} aria-label="Increase" className="px-3 py-1.5 hover:opacity-60">+</button>
                         </div>
-                        <button type="button" onClick={() => removeItem(item.id)} className="font-en text-xs underline" style={{ color: 'var(--color-text-muted)' }}>
-                          Remove
+                        <button type="button" onClick={() => removeItem(item.id)} className="text-xs underline" style={{ color: 'var(--color-text-muted)' }}>
+                          {t('cart.remove')}
                         </button>
                       </div>
                     </div>
@@ -59,9 +61,9 @@ export default function Cart() {
             </div>
 
             <div className="mt-8 flex items-center justify-between">
-              <span className="font-en text-base font-semibold uppercase tracking-wider">Total</span>
-              <span className="font-en text-2xl font-bold" style={{ color: 'var(--color-accent)' }}>
-                {total.toFixed(1)} KWD
+              <span className="text-base font-semibold uppercase tracking-wider">{t('cart.total')}</span>
+              <span className="text-2xl font-bold" style={{ color: 'var(--color-accent)' }}>
+                {total.toFixed(1)} {t('cart.currency')}
               </span>
             </div>
 
@@ -69,10 +71,10 @@ export default function Cart() {
               href={buildOrderLink(items, total)}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 block w-full rounded-full py-4 text-center font-en text-sm font-bold uppercase tracking-wider transition-transform hover:scale-[1.02]"
+              className="mt-6 block w-full rounded-full py-4 text-center text-sm font-bold uppercase tracking-wider transition-transform hover:scale-[1.02]"
               style={{ background: 'var(--color-accent)', color: 'var(--color-primary)' }}
             >
-              Order on WhatsApp
+              {t('cart.order')}
             </a>
           </>
         )}

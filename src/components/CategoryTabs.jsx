@@ -1,7 +1,10 @@
 import { motion } from 'motion/react'
+import { useTranslation } from 'react-i18next'
 import { categories } from '../data/categories'
 
 export default function CategoryTabs({ active, onChange }) {
+  const { t } = useTranslation()
+
   return (
     <div className="flex flex-wrap justify-center gap-2.5">
       {categories.map((cat) => {
@@ -11,7 +14,7 @@ export default function CategoryTabs({ active, onChange }) {
             key={cat.id}
             type="button"
             onClick={() => onChange(cat.id)}
-            className="relative rounded-full px-4 py-2 font-en text-xs font-semibold uppercase tracking-wider transition-colors"
+            className="relative rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors"
             style={{
               color: 'var(--color-text-on-dark)',
             }}
@@ -24,7 +27,7 @@ export default function CategoryTabs({ active, onChange }) {
                 transition={{ type: 'spring', stiffness: 380, damping: 32 }}
               />
             )}
-            <span className="relative z-10">{cat.label}</span>
+            <span className="relative z-10">{t(`shop.${cat.id}`)}</span>
           </button>
         )
       })}

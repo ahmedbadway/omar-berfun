@@ -1,0 +1,52 @@
+export default {
+  nav: {
+    home: 'الرئيسية',
+    shop: 'المتجر',
+  },
+  hero: {
+    title: 'ELO PERFUMES',
+    sub: 'اكتشف عطرك المميز',
+    cta: 'تسوق الآن',
+  },
+  featured: { title: 'مميز' },
+  categories: { title: 'المجموعات' },
+  bestsellers: { title: 'الأكثر مبيعاً' },
+  cta: {
+    title: 'اطلب عبر واتساب',
+    sub: 'نوصل لجميع مناطق الكويت',
+    btn: 'تواصل الآن',
+  },
+  product: {
+    outOfStock: 'نفذت الكمية',
+    sale: 'تخفيض',
+    addToCart: 'أضف للسلة',
+    scentNotes: 'مكونات العطر',
+    related: 'قد يعجبك أيضاً',
+    notFound: 'المنتج غير موجود.',
+    back: 'العودة للمتجر',
+  },
+  cart: {
+    title: 'سلة التسوق',
+    empty: 'السلة فارغة',
+    total: 'الإجمالي',
+    order: 'اطلب عبر واتساب',
+    currency: 'د.ك',
+    remove: 'إزالة',
+    continue: 'مواصلة التسوق',
+  },
+  shop: {
+    title: 'المتجر',
+    all: 'الكل',
+    perfumes: 'عطور',
+    allOverSpray: 'سبراي',
+    vaseDiffusers: 'معطرات',
+    giftSets: 'هدايا',
+    skinCare: 'عناية بالبشرة',
+    summerOffers: 'عروض الصيف',
+    emptyCategory: 'لا توجد منتجات في هذه المجموعة بعد.',
+  },
+  categoriesMeta: {
+    products: 'منتجات',
+    product: 'منتج',
+  },
+}
